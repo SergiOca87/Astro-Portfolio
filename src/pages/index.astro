@@ -5,14 +5,50 @@ import Card from '../components/Card.astro';
 
 <Layout title="Sergi Oca | Portfolio">
 	<main>
-		<h1>Welcome to <span class="text-gradient">Astro</span></h1>
-		<p class="instructions">
-			To get started, open the directory <code>src/pages</code> in your
-			project.<br />
-			<strong>Code Challenge:</strong> Tweak the "Welcome to Astro"
-			message above.
-		</p>
-		<!-- <ul role="list" class="link-card-grid">
+		<section class="intro">
+			<div class="container mx-auto xl px-5 pt-20 intro-wrap">
+				<p class="pretitle font-bold text-purple-300 mb-2 pl-10">
+					Hello, I'm Sergi
+				</p>
+				<h1 class="head_text text-center mb-4 neon_gradient">
+					This is my <br /><span class="pl-20">Portfolio</span>
+				</h1>
+
+				<svg
+					xmlns="http://www.w3.org/2000/svg"
+					width="200px"
+					height="200px"
+					viewBox="0 0 200 200"
+					version="1.1"
+					class="triangle1"
+				>
+					<polygon
+						style="fill:none;stroke:#f0abfc;stroke-width:2px"
+						points="183.138438763306,172 16.8615612366939,172 100,28"
+					></polygon>
+				</svg>
+
+				<svg
+					xmlns="http://www.w3.org/2000/svg"
+					width="200px"
+					height="200px"
+					viewBox="0 0 200 200"
+					version="1.1"
+					class="triangle2"
+				>
+					<polygon
+						style="fill:none;stroke:#5b21b6;stroke-width:2px"
+						points="183.138438763306,172 16.8615612366939,172 100,28"
+					></polygon>
+				</svg>
+			</div>
+		</section>
+	</main>
+
+	<section class="projects"></section>
+
+	<section class="contact"></section>
+	<!-- <ul role="list" class="link-card-grid">
 			<Card
 				href="https://docs.astro.build/"
 				title="Documentation"
@@ -34,67 +70,89 @@ import Card from '../components/Card.astro';
 				body="Come say hi to our amazing Discord community. ❤️"
 			/>
 		</ul> -->
-	</main>
 </Layout>
 
 <style>
-	main {
-		margin: auto;
-		padding: 1rem;
-		width: 800px;
-		max-width: calc(100% - 2rem);
-		color: white;
-		font-size: 20px;
-		line-height: 1.6;
-	}
-	.astro-a {
-		position: absolute;
-		top: -32px;
-		left: 50%;
-		transform: translatex(-50%);
-		width: 220px;
-		height: auto;
-		z-index: -1;
-	}
 	h1 {
-		font-size: 4rem;
-		font-weight: 700;
-		line-height: 1;
-		text-align: center;
-		margin-bottom: 1em;
+		font-size: 6rem;
+		font-weight: 900;
+		line-height: 1.2;
+		text-align: left;
 	}
-	.text-gradient {
-		background-image: var(--accent-gradient);
-		-webkit-background-clip: text;
-		-webkit-text-fill-color: transparent;
-		background-size: 400%;
-		background-position: 0%;
-	}
-	.instructions {
-		margin-bottom: 2rem;
-		border: 1px solid rgba(var(--accent-light), 25%);
+
+	h1:after {
+		content: '';
+		position: absolute;
+		height: 2px;
+		width: 20rem;
+		bottom: -1rem;
+		right: 10rem;
 		background: linear-gradient(
-			rgba(var(--accent-dark), 66%),
-			rgba(var(--accent-dark), 33%)
+			90deg,
+			rgba(248, 197, 206, 0.2) 0%,
+			rgba(91, 33, 182, 1) 50%
 		);
-		padding: 1.5rem;
-		border-radius: 8px;
 	}
-	.instructions code {
-		font-size: 0.8em;
-		font-weight: bold;
-		background: rgba(var(--accent-light), 12%);
-		color: rgb(var(--accent-light));
-		border-radius: 4px;
-		padding: 0.3em 0.4em;
+
+	.pretitle {
+		font-size: 2rem;
 	}
-	.instructions strong {
-		color: rgb(var(--accent-light));
+
+	.intro-wrap {
+		position: relative;
 	}
-	.link-card-grid {
-		display: grid;
-		grid-template-columns: repeat(auto-fit, minmax(24ch, 1fr));
-		gap: 2rem;
-		padding: 0;
+
+	/* Lava Lamp */
+	/* .intro-wrap:before {
+		content: '';
+		width: 30rem;
+		height: 30rem;
+		position: absolute;
+		background: rgba(255, 255, 255, 0.04);
+		right: 0;
+		top: -5rem;
+		animation:
+			morph 15s linear infinite alternate,
+			spin 30s linear infinite;
+		z-index: 1;
+		will-change: border-radius, transform;
+		transform-origin: 55% 55%;
+		pointer-events: none;
+	}
+
+	@keyframes morph {
+		0% {
+			border-radius: 40% 60% 60% 40%/70% 30%;
+		}
+
+		to {
+			border-radius: 40% 60%;
+		}
+	}
+
+	@keyframes spin {
+		to {
+			transform: rotate(1turn);
+		}
+	} */
+
+	.triangle1 {
+		position: absolute;
+		top: 4rem;
+		left: -2rem;
+		transform: rotate(20deg);
+		z-index: -1;
+		opacity: 0.4;
+		max-width: 7rem;
+	}
+
+	.triangle2 {
+		position: absolute;
+		top: 14rem;
+		left: -3rem;
+		transform: rotate(-27deg);
+		z-index: -1;
+		opacity: 1;
+		max-width: 10rem;
 	}
 </style>
