@@ -1,51 +1,21 @@
 ---
 import Layout from '../layouts/RootLayout.astro';
 import Card from '../components/Card.astro';
+import ProjectsGrid from '../components/ProjectsGrid.astro';
+import Hero from '../components/Hero.astro';
 ---
 
 <Layout title="Sergi Oca | Portfolio">
-	<main>
-		<section class="intro">
-			<div class="container mx-auto xl px-5 pt-20 intro-wrap">
-				<p class="pretitle font-bold text-purple-300 mb-2 pl-10">
-					Hello, I'm Sergi
-				</p>
-				<h1 class="head_text text-center mb-4 neon_gradient">
-					This is my <br /><span class="pl-20">Portfolio</span>
-				</h1>
+	<Hero />
 
-				<svg
-					xmlns="http://www.w3.org/2000/svg"
-					width="200px"
-					height="200px"
-					viewBox="0 0 200 200"
-					version="1.1"
-					class="triangle1"
-				>
-					<polygon
-						style="fill:none;stroke:#f0abfc;stroke-width:2px"
-						points="183.138438763306,172 16.8615612366939,172 100,28"
-					></polygon>
-				</svg>
-
-				<svg
-					xmlns="http://www.w3.org/2000/svg"
-					width="200px"
-					height="200px"
-					viewBox="0 0 200 200"
-					version="1.1"
-					class="triangle2"
-				>
-					<polygon
-						style="fill:none;stroke:#5b21b6;stroke-width:2px"
-						points="183.138438763306,172 16.8615612366939,172 100,28"
-					></polygon>
-				</svg>
-			</div>
-		</section>
-	</main>
-
-	<section class="projects"></section>
+	<section class="projects mt-60">
+		<h2
+			class="text-lg font-bold text-purple-300 mb-10 after:absolute after:w-4/5 after:h-px after:bg-indigo-400 after:-bottom-2 after:-right-4 relative w-fit"
+		>
+			Projects
+		</h2>
+		<ProjectsGrid />
+	</section>
 
 	<section class="contact"></section>
 	<!-- <ul role="list" class="link-card-grid">
@@ -71,88 +41,3 @@ import Card from '../components/Card.astro';
 			/>
 		</ul> -->
 </Layout>
-
-<style>
-	h1 {
-		font-size: 6rem;
-		font-weight: 900;
-		line-height: 1.2;
-		text-align: left;
-	}
-
-	h1:after {
-		content: '';
-		position: absolute;
-		height: 2px;
-		width: 20rem;
-		bottom: -1rem;
-		right: 10rem;
-		background: linear-gradient(
-			90deg,
-			rgba(248, 197, 206, 0.2) 0%,
-			rgba(91, 33, 182, 1) 50%
-		);
-	}
-
-	.pretitle {
-		font-size: 2rem;
-	}
-
-	.intro-wrap {
-		position: relative;
-	}
-
-	/* Lava Lamp */
-	/* .intro-wrap:before {
-		content: '';
-		width: 30rem;
-		height: 30rem;
-		position: absolute;
-		background: rgba(255, 255, 255, 0.04);
-		right: 0;
-		top: -5rem;
-		animation:
-			morph 15s linear infinite alternate,
-			spin 30s linear infinite;
-		z-index: 1;
-		will-change: border-radius, transform;
-		transform-origin: 55% 55%;
-		pointer-events: none;
-	}
-
-	@keyframes morph {
-		0% {
-			border-radius: 40% 60% 60% 40%/70% 30%;
-		}
-
-		to {
-			border-radius: 40% 60%;
-		}
-	}
-
-	@keyframes spin {
-		to {
-			transform: rotate(1turn);
-		}
-	} */
-
-	.triangle1 {
-		position: absolute;
-		top: 4rem;
-		left: -2rem;
-		transform: rotate(20deg);
-		z-index: -1;
-		opacity: 0.4;
-		max-width: 7rem;
-	}
-
-	.triangle2 {
-		position: absolute;
-		top: 14rem;
-		left: -3rem;
-		transform: rotate(-27deg);
-		z-index: -1;
-		opacity: 1;
-		max-width: 10rem;
-	}
-</style>

@@ -1,7 +1,10 @@
 ---
 import Footer from '../components/Footer.astro';
 import Header from '../components/Header.astro';
+import { ViewTransitions, fade } from 'astro:transitions';
+import '../styles/main.css';
 const { title } = Astro.props;
+import { gsap } from 'gsap';
 ---
 
 <!doctype html>
@@ -13,132 +16,110 @@ const { title } = Astro.props;
 		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
 		<meta name="generator" content={Astro.generator} />
 		<title>{title}</title>
+		<ViewTransitions />
 	</head>
 	<body>
 		<Header />
-		<slot />
+		<main class="container max-w-7xl mx-auto pl-6 pr-6">
+			<slot />
+		</main>
 		<Footer />
+
+		<!-- <script>
+			import '../scripts/menu.js';
+		</script> -->
+		<style is:global>
+			/* @tailwind base;
+			@tailwind components;
+			@tailwind utilities; */
+			:root {
+				--accent: 136, 58, 234;
+				--accent-light: 224, 204, 250;
+				--accent-dark: 49, 10, 101;
+				--accent-gradient: linear-gradient(
+					45deg,
+					rgb(var(--accent)),
+					rgb(var(--accent-light)) 30%,
+					white 60%
+				);
+				--pink: #f8c5ce;
+			}
+
+			.orange_gradient {
+				@apply bg-gradient-to-r from-amber-500 via-orange-600 to-yellow-500 bg-clip-text text-transparent;
+			}
+
+			.green_gradient {
+				@apply bg-gradient-to-r from-green-400 to-green-500 bg-clip-text text-transparent;
+			}
+
+			.blue_gradient {
+				@apply bg-gradient-to-r from-blue-600 to-cyan-600 bg-clip-text text-transparent;
+			}
+
+			.neon_gradient {
+				@apply bg-gradient-to-r from-violet-600 to-fuchsia-200 bg-clip-text text-transparent;
+			}
+
+			html {
+				font-family: system-ui, sans-serif;
+			}
+
+			body {
+				background: radial-gradient(
+					var(--pink) 0.1px,
+					rgb(0, 0, 0) 1px
+				);
+				background-size: 50px 50px;
+				min-height: 100vh;
+				height: 100%;
+				padding-bottom: 5rem;
+				position: relative;
+				z-index: 1;
+			}
+
+			body::before {
+				content: '';
+				background-color: rgba(12, 14, 32, 0.7);
+				background: var(--pink);
+				padding-bottom: 5rem;
+				background: -webkit-linear-gradient(
+					to bottom,
+					rgb(38, 51, 66),
+					rgba(40, 44, 85, 0.6)
+				);
+				background: linear-gradient(
+					to bottom,
+					rgb(38, 51, 66),
+					rgba(40, 44, 85, 0.8)
+				);
+				position: absolute;
+				width: 100%;
+				height: 100%;
+				z-index: -1;
+			}
+
+			code {
+				font-family:
+					Menlo,
+					Monaco,
+					Lucida Console,
+					Liberation Mono,
+					DejaVu Sans Mono,
+					Bitstream Vera Sans Mono,
+					Courier New,
+					monospace;
+			}
+
+			main {
+				/* margin: auto;
+				padding: 1rem;
+				width: 800px;
+				max-width: calc(100% - 2rem);
+				color: white;
+				font-size: 20px;
+				line-height: 1.6; */
+			}
+		</style>
 	</body>
 </html>
-<style is:global>
-	:root {
-		--accent: 136, 58, 234;
-		--accent-light: 224, 204, 250;
-		--accent-dark: 49, 10, 101;
-		--accent-gradient: linear-gradient(
-			45deg,
-			rgb(var(--accent)),
-			rgb(var(--accent-light)) 30%,
-			white 60%
-		);
-		--pink: #f8c5ce;
-	}
-
-	.orange_gradient {
-		@apply bg-gradient-to-r from-amber-500 via-orange-600 to-yellow-500 bg-clip-text text-transparent;
-	}
-
-	.green_gradient {
-		@apply bg-gradient-to-r from-green-400 to-green-500 bg-clip-text text-transparent;
-	}
-
-	.blue_gradient {
-		@apply bg-gradient-to-r from-blue-600 to-cyan-600 bg-clip-text text-transparent;
-	}
-
-	.neon_gradient {
-		@apply bg-gradient-to-r from-violet-800 to-fuchsia-300 bg-clip-text text-transparent;
-	}
-
-	html {
-		font-family: system-ui, sans-serif;
-	}
-
-	body {
-		background: radial-gradient(var(--pink) 0.1px, rgb(0, 0, 0) 1px);
-		background-size: 50px 50px;
-		min-height: 100vh;
-		height: 100%;
-		padding-bottom: 5rem;
-		position: relative;
-		z-index: 1;
-	}
-
-	body::before {
-		content: '';
-		background-color: rgba(12, 14, 32, 0.7);
-		background: var(--pink);
-		padding-bottom: 5rem;
-		background: -webkit-linear-gradient(
-			to bottom,
-			rgba(12, 14, 32, 0.5),
-			rgba(40, 44, 85, 0.6)
-		);
-		background: linear-gradient(
-			to bottom,
-			rgba(12, 14, 32, 0.5),
-			rgba(40, 44, 85, 0.8)
-		);
-		position: absolute;
-		width: 100%;
-		height: 100%;
-		z-index: -1;
-	}
-
-	code {
-		font-family:
-			Menlo,
-			Monaco,
-			Lucida Console,
-			Liberation Mono,
-			DejaVu Sans Mono,
-			Bitstream Vera Sans Mono,
-			Courier New,
-			monospace;
-	}
-
-	main {
-		margin: auto;
-		padding: 1rem;
-		width: 800px;
-		max-width: calc(100% - 2rem);
-		color: white;
-		font-size: 20px;
-		line-height: 1.6;
-	}
-
-	.text-gradient {
-		background-image: var(--accent-gradient);
-		-webkit-background-clip: text;
-		-webkit-text-fill-color: transparent;
-		background-size: 400%;
-		background-position: 0%;
-	}
-	.instructions {
-		margin-bottom: 2rem;
-		border: 1px solid rgba(var(--accent-light), 25%);
-		background: linear-gradient(
-			rgba(var(--accent-dark), 66%),
-			rgba(var(--accent-dark), 33%)
-		);
-		padding: 1.5rem;
-		border-radius: 8px;
-	}
-	.instructions code {
-		font-size: 0.8em;
-		font-weight: bold;
-		background: rgba(var(--accent-light), 12%);
-		color: rgb(var(--accent-light));
-		border-radius: 4px;
-		padding: 0.3em 0.4em;
-	}
-	.instructions strong {
-		color: rgb(var(--accent-light));
-	}
-	.link-card-grid {
-		display: grid;
-		grid-template-columns: repeat(auto-fit, minmax(24ch, 1fr));
-		gap: 2rem;
-		padding: 0;
-	}
-</style>

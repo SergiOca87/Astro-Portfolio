@@ -1,0 +1,21 @@
+---
+import Layout from '../layouts/RootLayout.astro';
+import { ViewTransitions } from 'astro:transitions';
+import { Image } from 'astro:assets';
+const { frontmatter } = Astro.props;
+const { title, description } = frontmatter;
+---
+
+<Layout title={title}>
+	<main>
+		<div class="container">
+			<h1>{title}</h1>
+
+			<div>
+				<slot />
+			</div>
+		</div>
+	</main>
+</Layout>
+
+<style></style>

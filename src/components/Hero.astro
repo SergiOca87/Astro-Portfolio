@@ -1,0 +1,250 @@
+<section class="intro intro-wrap container mx-auto max-w-3xl mt-20">
+	<p class="text-lg font-bold text-purple-300 mb-2 pl-10">
+		Hello, I'm <span class="text-violet-500">Sergi</span>
+	</p>
+	<h1 class="head_text text-center mb-4 neon_gradient">
+		This is my <br /><span class="pl-20">Portfolio</span>
+	</h1>
+	<span class="underline"></span>
+	<svg
+		xmlns="http://www.w3.org/2000/svg"
+		width="200px"
+		height="200px"
+		viewBox="0 0 200 200"
+		version="1.1"
+		class="triangle1 decorator"
+	>
+		<polygon
+			style="fill:none;stroke:#f5d0fe;stroke-width:2px"
+			points="183.138438763306,172 16.8615612366939,172 100,28"></polygon>
+	</svg>
+
+	<svg
+		xmlns="http://www.w3.org/2000/svg"
+		width="150px"
+		height="150px"
+		viewBox="0 0 200 200"
+		version="1.1"
+		class="triangle2 decorator"
+	>
+		<polygon
+			style="fill:none;stroke:#7c3aed;stroke-width:2px"
+			points="183.138438763306,172 16.8615612366939,172 100,28"></polygon>
+	</svg>
+
+	<svg
+		xmlns="http://www.w3.org/2000/svg"
+		width="120px"
+		height="120px"
+		viewBox="0 0 200 200"
+		version="1.1"
+		class="rect decorator"
+	>
+		<rect
+			style="fill:none;stroke:#7c3aed;stroke-width:2px"
+			x="50"
+			y="20"
+			width="150"
+			height="150"></rect>
+	</svg>
+
+	<svg
+		xmlns="http://www.w3.org/2000/svg"
+		width="100px"
+		height="100px"
+		class="circle decorator"
+	>
+		<defs>
+			<linearGradient id="Gradient1">
+				<stop class="stop1" offset="0%"></stop>
+				<stop class="stop2" offset="100%"></stop>
+			</linearGradient>
+		</defs>
+		<!-- <style>
+			#circ1 {
+				fill: url(#Gradient1);
+			}
+			.stop1 {
+				stop-color: #f5d0fe;
+			}
+			.stop2 {
+				stop-color: #7c3aed;
+				stop-opacity: 0;
+			}
+		</style> -->
+
+		<circle
+			style="fill:none;stroke:#f5d0fe;stroke-width:2px"
+			id="circ1"
+			cx="30"
+			cy="30"
+			r="29"></circle>
+	</svg>
+</section>
+
+<style>
+	h1 {
+		font-size: 6rem;
+		font-weight: 900;
+		line-height: 1.2;
+		text-align: left;
+	}
+
+	.underline {
+		position: absolute;
+		height: 2px;
+		width: 20rem;
+		bottom: -1rem;
+		right: 10rem;
+		background: linear-gradient(90deg, #f5d0fe 0%, #7c3aed 50%);
+	}
+	/* h1:after {
+		content: '';
+		position: absolute;
+		height: 2px;
+		width: 20rem;
+		bottom: -1rem;
+		right: 10rem;
+		background: linear-gradient(90deg, #f5d0fe 0%, #7c3aed 50%);
+	} */
+
+	.pretitle {
+		font-size: 2rem;
+	}
+
+	.intro-wrap {
+		position: relative;
+	}
+
+	/* Lava Lamp */
+	/* .intro-wrap:before {
+		content: '';
+		width: 30rem;
+		height: 30rem;
+		position: absolute;
+		background: rgba(255, 255, 255, 0.04);
+		right: 0;
+		top: -5rem;
+		animation:
+			morph 15s linear infinite alternate,
+			spin 30s linear infinite;
+		z-index: 1;
+		will-change: border-radius, transform;
+		transform-origin: 55% 55%;
+		pointer-events: none;
+	}
+
+	@keyframes morph {
+		0% {
+			border-radius: 40% 60% 60% 40%/70% 30%;
+		}
+
+		to {
+			border-radius: 40% 60%;
+		}
+	}
+
+	@keyframes spin {
+		to {
+			transform: rotate(1turn);
+		}
+	} */
+
+	.triangle1 {
+		position: absolute;
+		top: 4rem;
+		left: -2rem;
+		transform: rotate(20deg);
+		z-index: -1;
+		opacity: 0.4;
+		max-width: 7rem;
+	}
+
+	.triangle2 {
+		position: absolute;
+		top: 6rem;
+		right: 4rem;
+		z-index: -1;
+		opacity: 1;
+
+		transform: rotate(50deg);
+	}
+
+	.circle {
+		position: absolute;
+		top: 2rem;
+		right: 10rem;
+		z-index: -1;
+		opacity: 1;
+
+		transform: rotate(50deg);
+	}
+
+	.rect {
+		position: absolute;
+		top: 14rem;
+		left: -2rem;
+		transform: rotate(-27deg);
+		z-index: -1;
+		opacity: 1;
+	}
+</style>
+
+<script>
+	// https://greensock.com/docs/v3/GSAP/gsap.quickSetter()
+	// https://codepen.io/GreenSock/pen/BarWPyB
+	import { gsap } from 'gsap';
+
+	document.addEventListener('mousemove', mouseMoveFunc);
+
+	let decorators = gsap.utils.toArray('.decorator');
+
+	//TODO: Cannot combine floating and mousemove for now
+	// function floatingDecorators() {
+	// 	console.log('executing');
+
+	// 	decorators.forEach((decorator, index) => {
+	// 		const depth = index === 0 || index === 1 ? 40 : 100;
+	// 		const moveX = window.innerWidth / 2 / depth;
+	// 		const moveY = window.innerHeight / 2 / depth;
+	// 		index++;
+
+	// 		gsap.to(decorator, {
+	// 			duration: 10,
+	// 			repeat: -1,
+	// 			yoyo: true,
+	// 			// delay: randomDelay(),
+	// 			ease: 'none',
+	// 			x: `+=${(Math.random() * window.innerWidth) / depth}`,
+	// 			y: `+=${(Math.random() * window.innerHeight) / depth}`,
+	// 			rotation:
+	// 				index === 0 || index === 1
+	// 					? `${moveY * index}_short`
+	// 					: `${moveX * index}_short`,
+	// 		});
+	// 	});
+	// }
+
+	// floatingDecorators();
+
+	function mouseMoveFunc(e) {
+		// ease: 'back.out(1.7)';
+		decorators.forEach((decorator, index) => {
+			const depth = index === 0 || index === 1 ? 40 : 100;
+			const moveX = (e.pageX - window.innerWidth / 2) / depth;
+			const moveY = (e.pageY - window.innerHeight / 2) / depth;
+			index++;
+
+			gsap.to(decorator, {
+				x: moveX * index,
+				y: moveY * index,
+				delay: 0.1,
+				repeatRefresh: true,
+				rotation:
+					index === 0 || index === 1
+						? `${moveY * index}_short`
+						: `${moveX * index}_short`,
+			});
+		});
+	}
+</script>

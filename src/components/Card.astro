@@ -1,20 +1,25 @@
 ---
-const { href, title, body } = Astro.props;
+const { href, title, description, img } = Astro.props;
 ---
 
-<li class="link-card">
+<div class="link-card overflow-hidden rounded-t">
 	<a href={href}>
-		<h2>
-			{title}
-			<span>&rarr;</span>
-		</h2>
-		<p>
-			{body}
-		</p>
+		<img
+			src="../algorithms.png"
+			alt="Knowledge Portfolio"
+			width="100%"
+			transition:name="img"
+		/>
+
+		<div class="card-details p-10 border border-purple-300">
+			<h3 class="text-2xl font-bold text-purple-300 mb-3">{title}</h3>
+			<p class="text-purple-200">{description}</p>
+			<p class="text-purple-200">Stack: {description}</p>
+		</div>
 	</a>
-</li>
+</div>
 <style>
-	.link-card {
+	/* .link-card {
 		list-style: none;
 		display: flex;
 		padding: 1px;
@@ -51,5 +56,5 @@ const { href, title, body } = Astro.props;
 	}
 	.link-card:is(:hover, :focus-within) h2 {
 		color: rgb(var(--accent-light));
-	}
+	} */
 </style>
