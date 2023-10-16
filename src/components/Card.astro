@@ -1,25 +1,46 @@
 ---
-const { href, title, description, img } = Astro.props;
+import Stack from './Stack.astro';
+const {
+	href,
+	title,
+	description,
+	stackList,
+	stackBgColor,
+	img,
+	position,
+	index,
+} = Astro.props;
 ---
 
-<div class="link-card overflow-hidden rounded-t">
+<div
+	class=`card group -mt-12 z-10  p-4 bt hover:border-violet-300 transition-all rounded-md bg-slate-500/[.2] col-span-3 ${position === 'even' ? 'col-end-4' : 'col-end-5'}`
+>
 	<a href={href}>
 		<img
 			src="../algorithms.png"
 			alt="Knowledge Portfolio"
 			width="100%"
-			transition:name="img"
+			transition:name=`img-${index}`
 		/>
 
-		<div class="card-details p-10 border border-purple-300">
+		<div class="card-details p-10 pb-20 transition-all">
 			<h3 class="text-2xl font-bold text-purple-300 mb-3">{title}</h3>
 			<p class="text-purple-200">{description}</p>
-			<p class="text-purple-200">Stack: {description}</p>
+
+			<Stack stackList={stackList} stackBgColor={stackBgColor} />
 		</div>
 	</a>
-</div>
-<style>
-	/* .link-card {
+	<style>
+		.card {
+			background: rgba(100, 116, 139, 0);
+			border-radius: 16px;
+			box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+			backdrop-filter: blur(2px);
+			-webkit-backdrop-filter: blur(2px);
+			border: 1px solid rgba(100, 116, 139, 0.3);
+		}
+
+		/* .link-card {
 		list-style: none;
 		display: flex;
 		padding: 1px;
@@ -57,4 +78,5 @@ const { href, title, description, img } = Astro.props;
 	.link-card:is(:hover, :focus-within) h2 {
 		color: rgb(var(--accent-light));
 	} */
-</style>
+	</style>
+</div>

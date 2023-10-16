@@ -3,7 +3,9 @@
 		Hello, I'm <span class="text-violet-500">Sergi</span>
 	</p>
 	<h1 class="head_text text-center mb-4 neon_gradient">
-		This is my <br /><span class="pl-20">Portfolio</span>
+		<span>This is my</span>
+		<br />
+		<span class="pl-20">Portfolio</span>
 	</h1>
 	<span class="underline"></span>
 	<svg
@@ -195,56 +197,67 @@
 	// https://codepen.io/GreenSock/pen/BarWPyB
 	import { gsap } from 'gsap';
 
-	document.addEventListener('mousemove', mouseMoveFunc);
-
 	let decorators = gsap.utils.toArray('.decorator');
+	let titleLines = gsap.utils.toArray('h1 span');
 
-	//TODO: Cannot combine floating and mousemove for now
-	// function floatingDecorators() {
-	// 	console.log('executing');
+	function floatingDecorator(decorator, index) {
+		const randomize = (min, max) => Math.random() * (max - min) + min;
 
+		const moveX = randomize(50, 600);
+		const moveY = randomize(50, 600);
+		const positiveOrNegative = Math.random() < 0.5;
+
+		gsap.to(decorator, {
+			duration: randomize(5, 10),
+			ease: 'none',
+			x: `${positiveOrNegative ? '+' : '-'}=${randomize(1, 30)}`,
+			y: `${positiveOrNegative ? '+' : '-'}=${randomize(1, 15)}`,
+			rotation: () => randomize(-60, 60),
+			onComplete: () => floatingDecorator(decorator, index),
+		});
+	}
+
+	// TODO: On page load and also if we came back from history
+	decorators.forEach((decorator, index) => {
+		index++;
+
+		floatingDecorator(decorator, index);
+	});
+
+	// document.addEventListener('mousemove', mouseMoveFunc);
+
+	// function mouseMoveFunc(e) {
+	// 	ease: 'back.out(1.7)';
 	// 	decorators.forEach((decorator, index) => {
 	// 		const depth = index === 0 || index === 1 ? 40 : 100;
-	// 		const moveX = window.innerWidth / 2 / depth;
-	// 		const moveY = window.innerHeight / 2 / depth;
+	// 		const moveX = (e.pageX - window.innerWidth / 2) / depth;
+	// 		const moveY = (e.pageY - window.innerHeight / 2) / depth;
 	// 		index++;
 
 	// 		gsap.to(decorator, {
-	// 			duration: 10,
-	// 			repeat: -1,
-	// 			yoyo: true,
-	// 			// delay: randomDelay(),
-	// 			ease: 'none',
-	// 			x: `+=${(Math.random() * window.innerWidth) / depth}`,
-	// 			y: `+=${(Math.random() * window.innerHeight) / depth}`,
+	// 			x: moveX * index,
+	// 			y: moveY * index,
+	// 			delay: 0.1,
+	// 			repeatRefresh: true,
 	// 			rotation:
 	// 				index === 0 || index === 1
 	// 					? `${moveY * index}_short`
 	// 					: `${moveX * index}_short`,
 	// 		});
 	// 	});
+
+	// 	// titleLines.forEach((line, index) => {
+	// 	// 	const depth = index === 0 || index === 1 ? 70 : 100;
+	// 	// 	const moveX = (e.pageX - window.innerWidth / 2) / depth;
+	// 	// 	const moveY = (e.pageY - window.innerHeight / 2) / depth;
+	// 	// 	index++;
+
+	// 	// 	gsap.to(line, {
+	// 	// 		x: moveX * index,
+	// 	// 		y: moveY * index,
+	// 	// 		delay: 0.1,
+	// 	// 		repeatRefresh: true,
+	// 	// 	});
+	// 	// });
 	// }
-
-	// floatingDecorators();
-
-	function mouseMoveFunc(e) {
-		// ease: 'back.out(1.7)';
-		decorators.forEach((decorator, index) => {
-			const depth = index === 0 || index === 1 ? 40 : 100;
-			const moveX = (e.pageX - window.innerWidth / 2) / depth;
-			const moveY = (e.pageY - window.innerHeight / 2) / depth;
-			index++;
-
-			gsap.to(decorator, {
-				x: moveX * index,
-				y: moveY * index,
-				delay: 0.1,
-				repeatRefresh: true,
-				rotation:
-					index === 0 || index === 1
-						? `${moveY * index}_short`
-						: `${moveX * index}_short`,
-			});
-		});
-	}
 </script>

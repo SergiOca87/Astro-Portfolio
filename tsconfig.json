@@ -1,3 +1,9 @@
 {
-  "extends": "astro/tsconfigs/base"
+	"extends": "astro/tsconfigs/base"
+
+	// This is just to use collections, can remove otherwise
+	// "compilerOptions": {
+	// 	"strictNullChecks": true,
+	// 	"allowJs": true
+	// }
 }

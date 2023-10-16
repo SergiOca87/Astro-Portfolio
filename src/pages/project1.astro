@@ -2,16 +2,31 @@
 import Layout from '../layouts/RootLayout.astro';
 
 import { Image } from 'astro:assets';
-import projectImage from '../images/algorithms.png';
+import projectImage from '../../public/algorithms.png';
 ---
 
 <Layout>
+
+	<section class="mt-20">
+		<h1>
+	<section>
+
 	<img
 		src="../../algorithms.png"
 		alt="Knowledge Portfolio"
 		width="500"
-		transition:name="img"
+		transition:name="img-1"
 	/>
+
+	<!-- Why is this not working? -->
+	<!-- <Image
+		src={projectImage}
+		alt="Knowledge Portfolio"
+		format="avif"
+		width="500"
+		view-transition-name="img-1"
+	/> -->
+
 </Layout>
  Test Text, knowledge post Test Text, knowledge post
 
