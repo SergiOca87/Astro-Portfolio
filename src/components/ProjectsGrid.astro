@@ -38,16 +38,6 @@ import Card from './Card.astro';
 		stackList="Next.js 12, Supabase, Styled Components"
 		stackBgColor="bg-fuchsia-400"
 	/>
-	<!-- <a href="/project1">
-		<h2>Knowledge Portfolio</h2>
-		<p>Short Description:</p>
-		<img
-			src="../algorithms.png"
-			alt="Knowledge Portfolio"
-			width="500"
-			transition:name="img"
-		/>
-	</a> -->
 </div>
 
 <script>
@@ -59,16 +49,22 @@ import Card from './Card.astro';
 
 	const cards = document.querySelectorAll('.card');
 
+	const staggerAmount = 50;
+
 	cards.forEach((card, index) => {
-		console.log(`${index}-00`);
 		ScrollTrigger.create({
 			onUpdate({ progress }) {
-				// console.log(progress, direction, isActive);
-				gsap.to(card, {
-					duration: 0,
-					// ease: 'ease',
-					y: -progress * Number(`${index}00`),
-				});
+				if (index > 0) {
+					const newY =
+						-progress * Number(`${index}00`) +
+						index * staggerAmount;
+
+					console.log(newY, index);
+					gsap.to(card, {
+						duration: 0,
+						y: newY,
+					});
+				}
 			},
 		});
 	});
