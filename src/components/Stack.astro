@@ -2,11 +2,13 @@
 const { stackList, stackBgColor } = Astro.props;
 ---
 
-<div class="stackList flex gap-1 mt-5">
+<div class="stackList flex gap-1 mt-5 flex-wrap">
 	{
 		stackList.split(',').map((stackItem) => {
 			return (
-				<span class={`${stackBgColor} p-x-2 py-1 px-4 rounded-lg font-medium tracking-wide text-white block text-sm uppercase`}>
+				<span
+					class={`${stackBgColor} p-x-2 py-1 px-4 rounded-lg font-medium tracking-wide text-white block text-sm uppercase whitespace-nowrap`}
+				>
 					{stackItem}
 				</span>
 			);

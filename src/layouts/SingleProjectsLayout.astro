@@ -1,18 +1,123 @@
 ---
+import Stack from '../components/Stack.astro';
 import Layout from '../layouts/RootLayout.astro';
 import { Image } from 'astro:assets';
-const { frontmatter } = Astro.props;
-const { title, description } = frontmatter;
+// const { frontmatter } = Astro.props;
+// const { title, description } = frontmatter;
+const { title, img, stackList, stackBgColor, slot } = Astro.props;
 ---
 
 <Layout title={title}>
-	<div class="container">
-		<h1>{title}</h1>
+	<section class="mt-20">
+		<div class="flex gap-4">
+			<div class="flex-1">
+				<div class="relative">
+					<h1 class="head_text text-center mb-4 neon_gradient">
+						{title}
+					</h1>
 
-		<div>
-			<slot />
+					<Stack stackList={stackList} stackBgColor={stackBgColor} />
+
+					<p>Github</p>
+					<p>See Live Button</p>
+				</div>
+			</div>
+			<div class="flex-1">
+				<img
+					src={img}
+					alt={title}
+					width="500"
+					transition:name="img-1"
+				/>
+			</div>
 		</div>
-	</div>
+	</section>
+
+	<section class="pt-20 pb-20">
+		<div class="container max-w-4xl ml-auto mr-auto">
+			<h2
+				class="text-lg font-bold text-purple-300 mb-12 after:absolute after:w-4/5 after:h-px
+				after:bg-indigo-400
+				after:-bottom-2
+				after:-right-4
+				relative
+				w-fit"
+			>
+				Project Description
+			</h2>
+
+			<div class="text-white">
+				<slot />
+			</div>
+		</div>
+	</section>
 </Layout>
 
-<style></style>
+<style>
+	h1 {
+		font-size: 4rem;
+		font-weight: 900;
+		line-height: 1.2;
+		text-align: left;
+	}
+
+	.underline {
+		position: absolute;
+		height: 2px;
+		width: 15rem;
+		bottom: -1rem;
+		left: 5rem;
+		background: linear-gradient(90deg, #f5d0fe 0%, #7c3aed 50%);
+	}
+	/* h1:after {
+		content: '';
+		position: absolute;
+		height: 2px;
+		width: 20rem;
+		bottom: -1rem;
+		right: 10rem;
+		background: linear-gradient(90deg, #f5d0fe 0%, #7c3aed 50%);
+	} */
+
+	.pretitle {
+		font-size: 2rem;
+	}
+
+	.intro-wrap {
+		position: relative;
+	}
+
+	/* Lava Lamp */
+	/* .intro-wrap:before {
+		content: '';
+		width: 30rem;
+		height: 30rem;
+		position: absolute;
+		background: rgba(255, 255, 255, 0.04);
+		right: 0;
+		top: -5rem;
+		animation:
+			morph 15s linear infinite alternate,
+			spin 30s linear infinite;
+		z-index: 1;
+		will-change: border-radius, transform;
+		transform-origin: 55% 55%;
+		pointer-events: none;
+	}
+
+	@keyframes morph {
+		0% {
+			border-radius: 40% 60% 60% 40%/70% 30%;
+		}
+
+		to {
+			border-radius: 40% 60%;
+		}
+	}
+
+	@keyframes spin {
+		to {
+			transform: rotate(1turn);
+		}
+	} */
+</style>

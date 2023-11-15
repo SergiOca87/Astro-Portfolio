@@ -1,32 +1,29 @@
 ---
 import Layout from '../layouts/RootLayout.astro';
+import SingleProjectsLayout from '../layouts/SingleProjectsLayout.astro';
 
 import { Image } from 'astro:assets';
 import projectImage from '../../public/algorithms.png';
 ---
 
-<Layout>
+<SingleProjectsLayout
+	title="Knowledge Portfolio"
+	img="../../algorithms.png"
+	stackList="Next.js 12, Supabase, Styled Components"
+>
+	<p>
+		Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Donec odio.
+		Quisque volutpat mattis eros. Nullam malesuada erat ut turpis.
+		Suspendisse urna nibh viverra non semper suscipit posuere a pede.
+	</p>
 
-	<section class="mt-20">
-		<h1>
-	<section>
+	<p>
+		Donec nec justo eget felis facilisis fermentum. Aliquam porttitor mauris
+		sit amet orci. Aenean dignissim pellentesque felis.
+	</p>
 
-	<img
-		src="../../algorithms.png"
-		alt="Knowledge Portfolio"
-		width="500"
-		transition:name="img-1"
-	/>
-
-	<!-- Why is this not working? -->
-	<!-- <Image
-		src={projectImage}
-		alt="Knowledge Portfolio"
-		format="avif"
-		width="500"
-		view-transition-name="img-1"
-	/> -->
-
-</Layout>
- Test Text, knowledge post Test Text, knowledge post
-
+	<p>
+		Morbi in sem quis dui placerat ornare. Pellentesque odio nisi euismod in
+		pharetra a ultricies in diam. Sed arcu. Cras consequat.
+	</p>
+</SingleProjectsLayout>
