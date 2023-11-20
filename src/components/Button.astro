@@ -1,0 +1,28 @@
+---
+const { github, url, target, slot } = Astro.props;
+---
+
+<a
+	href={url}
+	target={target}
+	class="button github pointer py-4 px-6 border-1 flex gap-3 items-center font-medium tracking-wide text-white text-sm uppercase relative after:absolute after:w-[20px] after:h-[4px] after:bg-purple-200 after:bottom-[-2px] after:left-initial after:right-[8px] after:transition after:ease-in-out after:duration-300 hover:after:-translate-x-24"
+>
+	<slot />
+</a>
+
+<style>
+	a {
+		background: rgba(100, 116, 139, 0);
+		box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+		backdrop-filter: blur(2px);
+		-webkit-backdrop-filter: blur(2px);
+		border: 1px solid rgba(100, 116, 139, 0.3);
+		cursor: pointer;
+		color: #fff;
+	}
+
+	svg {
+		max-height: 20px;
+		max-width: 20px;
+	}
+</style>
