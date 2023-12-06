@@ -1,0 +1,41 @@
+---
+import Layout from '../layouts/RootLayout.astro';
+import SingleProjectsLayout from '../layouts/SingleProjectsLayout.astro';
+
+import { Image } from 'astro:assets';
+import projectImage from '../../public/algorithms.png';
+---
+
+<SingleProjectsLayout
+	title="Algorithms Diary"
+	img="../../algorithms.jpg"
+	stackList="React, javascript"
+	stackBgColor="bg-emerald-500"
+	url="https://algorithms-diary-e1dfzzhs2-sergioca87.vercel.app/"
+	githubUrl="https://github.com/SergiOca87/algorithms-diary"
+>
+	<p>
+		In this blog I save some of the algorithmic solutions to some of the
+		problems that I find on Codewars and Freecodecamp.
+	</p>
+
+	<p>
+		On 2020 I got the "JavaScript Algorithms and Data Structures"
+		certification from Freecodeamp as a result.
+	</p>
+
+	<a
+		href="https://www.freecodecamp.org/certification/sergioca87/javascript-algorithms-and-data-structures"
+		target="_blank"
+	>
+		<img src="../../freecodecamp-cert.jpg" />
+	</a>
+
+	<p></p>
+</SingleProjectsLayout>
+
+<style>
+	p {
+		margin: 15px 0 30px 0;
+	}
+</style>

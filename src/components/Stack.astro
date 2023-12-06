@@ -1,5 +1,5 @@
 ---
-const { stackList, stackBgColor } = Astro.props;
+const { stackList, stackBgColor = 'bg-white/5' } = Astro.props;
 ---
 
 <div class="stackList flex gap-1 mt-5 flex-wrap">
@@ -7,7 +7,7 @@ const { stackList, stackBgColor } = Astro.props;
 		stackList.split(',').map((stackItem) => {
 			return (
 				<span
-					class={`${stackBgColor} p-x-2 py-1 px-4 rounded-lg font-medium tracking-wide text-white block text-sm uppercase whitespace-nowrap`}
+					class={`${stackBgColor} p-x-2 py-1 px-4 rounded-full font-medium tracking-wide text-white block text-sm uppercase whitespace-nowrap`}
 				>
 					{stackItem}
 				</span>

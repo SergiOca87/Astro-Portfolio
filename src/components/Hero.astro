@@ -1,8 +1,9 @@
-<section class="intro intro-wrap container mx-auto max-w-3xl mt-20">
-	<p class="text-lg font-bold text-purple-300 mb-2 pl-10">
-		Hello, I'm <span class="text-violet-500">Sergi</span>
-	</p>
+<div class="intro intro-wrap container mx-auto max-w-3xl mt-20">
 	<h1 class="head_text text-center mb-4 neon_gradient">
+		<span class="text-lg font-bold text-purple-300 mb-2 pl-10"
+			>Hey, I'm <span class="text-violet-500">Sergi</span></span
+		>
+		<br />
 		<span>This is my</span>
 		<br />
 		<span class="pl-20">Portfolio</span>
@@ -82,7 +83,7 @@
 			cy="30"
 			r="29"></circle>
 	</svg>
-</section>
+</div>
 
 <style>
 	h1 {
@@ -98,7 +99,13 @@
 		width: 20rem;
 		bottom: -1rem;
 		right: 10rem;
-		background: linear-gradient(90deg, #f5d0fe 0%, #7c3aed 50%);
+		background: linear-gradient(
+			90deg,
+			#f5d0fe 0%,
+			#7c3aed 50%,
+			rgba(124, 58, 237, 0.2),
+			rgba(124, 58, 237, 0)
+		);
 	}
 	/* h1:after {
 		content: '';
