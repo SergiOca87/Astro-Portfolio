@@ -16,7 +16,7 @@ const {
 	class=`card group max-w-[700px] -mt-12 z-10 p-4 bt hover:border-violet-300 transition-all rounded-md bg-slate-500/[.2] md:col-span-3 col-span-4 ${position === 'even' ? 'md:col-end-4' : 'md:col-end-5'}`
 > -->
 <div
-	class=`card group max-w-[700px] z-10 p-4 bt hover:border-violet00 transition-all rounded-md bg-slate-500/[.2] md:col-span-2`
+	class=`card group max-w-[700px] w-full h-full m-auto z-10 p-4 bt hover:border-violet00 transition-all rounded-md bg-slate-500/[.2] md:col-span-2`
 >
 	<a href={href} class="group">
 		<div
@@ -29,8 +29,6 @@ const {
 				transition:name=`img-${index}`
 				class="max-h-[300px] h-full object-cover group-hover:scale-105 transition duration-1000"
 			/>
-
-			<p>{stackBgColor}</p>
 		</div>
 		<div class="card-details p-10 pb-20 transition-all">
 			<h3 class="text-2xl font-bold text-purple-300 mb-3">{title}</h3>
