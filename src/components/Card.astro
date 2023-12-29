@@ -16,12 +16,16 @@ const {
 	class=`card group max-w-[700px] -mt-12 z-10 p-4 bt hover:border-violet-300 transition-all rounded-md bg-slate-500/[.2] md:col-span-3 col-span-4 ${position === 'even' ? 'md:col-end-4' : 'md:col-end-5'}`
 > -->
 <div
-	class=`card group max-w-[700px] w-full h-full m-auto z-10 p-4 bt hover:border-violet00 transition-all rounded-md bg-slate-500/[.2] md:col-span-2`
+	class=`card relative group max-w-[700px] w-full h-full m-auto z-10 p-4 bt hover:border-violet00 transition-all bg-slate-500/[.2] md:col-span-2 rounded-lg`
 >
 	<a href={href} class="group">
 		<div
-			class=`relative overflow-hidden max-h-[300px] h-full rounded-md after:absolute after:w-full after:h-full after:top-0 after:left-0 after:z-10 after:transition duration-300 after:bg-gradient-to-r bg-gradient-to-r from-blue-700 via-blue-800 to-gray-900  after:opacity-0 group-hover:after:opacity-10`
+			class=`relative overflow-hidden max-h-[300px] h-full rounded-md  card-overlay`
 		>
+			<div
+				class="pseudo-element-wrap after:absolute after:w-full after:h-full after:top-0 after:left-0 after:z-10 after:transition duration-300 after:bg-gradient-to-r bg-gradient-to-r from-blue-700 via-blue-800 to-gray-900 after:opacity-0 group-hover:after:opacity-10"
+			>
+			</div>
 			<img
 				src={img}
 				alt={title}
@@ -30,27 +34,27 @@ const {
 				class="max-h-[300px] h-full object-cover group-hover:scale-105 transition duration-1000"
 			/>
 		</div>
-		<div class="card-details p-10 pb-20 transition-all">
-			<h3 class="text-2xl font-bold text-purple-300 mb-3">{title}</h3>
-			<p class="text-purple-200">{description}</p>
-
-			<Stack stackList={stackList} stackBgColor={stackBgColor} />
-		</div>
 	</a>
-	<style>
-		.card {
-			background: rgba(100, 116, 139, 0);
-			border-radius: 16px;
-			box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
-			backdrop-filter: blur(2px);
-			-webkit-backdrop-filter: blur(2px);
-			border: 1px solid rgba(100, 116, 139, 0.3);
-		}
-		.card:hover {
-			border: 1px solid rgba(100, 116, 139, 0.7);
-		}
+	<div class="card-details p-10 pb-20 transition-all">
+		<h3 class="text-2xl font-bold text-purple-300 mb-3">{title}</h3>
+		<p class="text-purple-200">{description}</p>
 
-		/* .link-card {
+		<Stack stackList={stackList} stackBgColor={stackBgColor} />
+	</div>
+</div>
+<style>
+	.card {
+		background: rgba(100, 116, 139, 0);
+		box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+		backdrop-filter: blur(2px);
+		-webkit-backdrop-filter: blur(2px);
+		border: 1px solid rgba(100, 116, 139, 0.3);
+	}
+	.card:hover {
+		border: 1px solid rgba(100, 116, 139, 0.7);
+	}
+
+	/* .link-card {
 		list-style: none;
 		display: flex;
 		padding: 1px;
@@ -88,5 +92,13 @@ const {
 	.link-card:is(:hover, :focus-within) h2 {
 		color: rgb(var(--accent-light));
 	} */
-	</style>
-</div>
+</style>
+
+<!-- <script is:inline>
+		document.addEventListener('astro:before-preparation', (ev) => {
+			const pseudoElementWrap = document.querySelector(
+				'.pseudo-element-wrap',
+			);
+			pseudoElementWrap.style.display = 'none';
+		});
+	</script> -->

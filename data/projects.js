@@ -8,9 +8,9 @@ const projects = [
     },
     {
         title: 'Open AI API',
-        description: 'A small App where I use the OpenAI API',
-        stackList: 'Next.js 12, Supabase, Styled Components',
-        img: '../algorithms.png',
+        description: 'A small App with an Express server where I use the OpenAI API',
+        stackList: 'React, Vite, Express, Chakra UI',
+        img: '../openaidemo.JPG',
         stackBgColor: 'bg-cyan-400'
     },
     {
