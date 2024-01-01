@@ -5,32 +5,44 @@ import Card from './Card.astro';
 import projects from '../../data/projects';
 ---
 
-<div class="grid grid-cols-1 lg:grid-cols-4 gap-8 relative">
-	<!-- Colors: https://tailwindcss.com/docs/customizing-colors -->
+<section data-scroll-section class="mt-60">
+	<h2
+		class="text-lg font-bold text-purple-300 mb-12 after:absolute after:w-4/5 after:h-px after:bg-indigo-400 after:-bottom-2 after:-right-4 relative w-fit"
+	>
+		Projects
+	</h2>
+	<div class="grid grid-cols-1 lg:grid-cols-4 gap-8 relative">
+		<!-- Colors: https://tailwindcss.com/docs/customizing-colors -->
 
-	{
-		projects.map((project, index) => {
-			return (
-				<Card
-					href={`/project${index + 1}`}
-					title={project.title}
-					description={project.description}
-					stackList={project.stackList}
-					img={project.img}
-					index={index + 1}
-					stackBgColor={project.stackBgColor}
-				/>
-			);
-		})
-	}
+		{
+			projects.map((project, index) => {
+				return (
+					<Card
+						href={`/project${index + 1}`}
+						title={project.title}
+						description={project.description}
+						stackList={project.stackList}
+						img={project.img}
+						index={index + 1}
+						stackBgColor={project.stackBgColor}
+					/>
+				);
+			})
+		}
 
-	<div class="lava-1"></div>
-	<div class="lava-2"></div>
-	<div class="lava-3"></div>
-	<div class="lava-4"></div>
+		<div class="lava-1" data-scroll data-scroll-speed="3"></div>
 
-	<!-- position={index % 2 === 0 ? 'even' : 'odd'} -->
-	<!-- 
+		<div class="lava-2" data-scroll data-scroll-speed="-4"></div>
+
+		<div class="lava-3" data-scroll data-scroll-speed="2"></div>
+	</div>
+
+	<!-- <div data-scroll data-scroll-speed="-1">
+		<div class="lava lava-4"></div>
+	</div> -->
+</section>
+<!-- position={index % 2 === 0 ? 'even' : 'odd'} -->
+<!-- 
 	<Card
 		href="/project1"
 		title="Knowledge Portfolio"
@@ -111,12 +123,11 @@ import projects from '../../data/projects';
 		index="1"
 		stackBgColor="bg-cyan-400"
 	/> -->
-</div>
 
 <style>
 	/* Lava Lamp */
-	.lava-1:before {
-		content: '';
+
+	.lava-1 {
 		width: 15rem;
 		height: 15rem;
 		position: absolute;
@@ -124,37 +135,35 @@ import projects from '../../data/projects';
 		right: -10%;
 		top: 10%;
 		animation:
-			morph 15s linear infinite alternate,
-			spin 30s linear infinite,
-			move 40s linear infinite alternate;
+			morph 10s linear infinite alternate,
+			spin 30s linear infinite;
+		/* move 40s linear infinite alternate; */
 		z-index: 1;
 		will-change: border-radius, transform;
 		transform-origin: 55% 55%;
 		pointer-events: none;
 	}
 
-	.lava-2:before {
-		content: '';
+	.lava-2 {
 		width: 20rem;
 		height: 20rem;
 		position: absolute;
-		background: rgba(255, 255, 255, 0.02);
+		background: rgba(255, 255, 255, 0.04);
 		/* rgb(245 208 254);
 		rgb(124 58 237) */
 		left: -6%;
 		top: 40%;
 		animation:
-			morph 15s linear infinite alternate,
-			spin 30s linear infinite,
-			move 60s linear infinite alternate;
+			morph 10s linear infinite alternate,
+			spin 30s linear infinite;
+		/* move 60s linear infinite alternate; */
 		z-index: 1;
 		will-change: border-radius, transform;
 		transform-origin: 55% 55%;
 		pointer-events: none;
 	}
 
-	.lava-3:before {
-		content: '';
+	.lava-3 {
 		width: 10rem;
 		height: 10rem;
 		position: absolute;
@@ -162,9 +171,9 @@ import projects from '../../data/projects';
 		right: 3%;
 		top: 65%;
 		animation:
-			morph 15s linear infinite alternate,
-			spin 30s linear infinite,
-			move 40s linear infinite alternate;
+			morph 10s linear infinite alternate,
+			spin 30s linear infinite;
+		/* move 40s linear infinite alternate; */
 		z-index: 1;
 		will-change: border-radius, transform;
 		transform-origin: 55% 55%;

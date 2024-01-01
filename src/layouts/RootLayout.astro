@@ -2,7 +2,9 @@
 import Footer from '../components/Footer.astro';
 import Header from '../components/Header.astro';
 import { ViewTransitions } from 'astro:transitions';
+
 import '../styles/main.css';
+import '../styles/locomotive-scroll.css';
 import '@fontsource/inter';
 const { title } = Astro.props;
 import { gsap } from 'gsap';
@@ -21,8 +23,11 @@ import { gsap } from 'gsap';
 	</head>
 	<body>
 		<Header />
-		<main class="container max-w-7xl mx-auto pl-6 pr-6">
-			<slot />
+		<main
+			class="container max-w-7xl mx-auto pl-6 pr-6"
+			data-scroll-container
+		>
+			<slot data-scroll-section />
 		</main>
 		<Footer />
 
@@ -129,5 +134,13 @@ import { gsap } from 'gsap';
 				line-height: 1.6;
 			}
 		</style>
+
+		<script>
+			import LocomotiveScroll from 'locomotive-scroll';
+			const scroll = new LocomotiveScroll({
+				el: document.querySelector('[data-scroll-container]'),
+				smooth: true,
+			});
+		</script>
 	</body>
 </html>
