@@ -52,7 +52,9 @@ const {
 				</div>
 			</div>
 
-			<div class="mt-5 p-2 overflow-hidden after:">
+			<div
+				class="mt-5 p-2 overflow-hidden main-img-wrap relative decoration"
+			>
 				<img
 					src={img}
 					alt={title}
@@ -123,6 +125,43 @@ const {
 			position: relative;
 		}
 
+		.decoration::after {
+			content: '';
+			position: absolute;
+			top: 20px;
+			right: 20px;
+			width: 20px;
+			height: 20px;
+			border-top: 2px solid #c392f7;
+			border-right: 2px solid #c392f7;
+			z-index: -1;
+			opacity: 0;
+			/* transform: translate(-10%, -10%); */
+			transition: all cubic-bezier(0.175, 0.885, 0.32, 1.275);
+			transition-duration: 1s;
+		}
+
+		/* .decoration::before {
+			content: '';
+			position: absolute;
+			bottom: 0;
+			right: 0;
+			width: 20px;
+			height: 20px;
+			border-bottom: 2px solid #c392f7;
+			border-right: 2px solid #c392f7;
+			z-index: -1;
+			transform: translate(-10%, -10%);
+			transition: transform cubic-bezier(0.175, 0.885, 0.32, 1.275);
+			transition-duration: 1s;
+		} */
+
+		.decoration.decoration-in::after {
+			top: 0px;
+			right: 0px;
+			opacity: 1;
+		}
+
 		/* Lava Lamp */
 		/* .intro-wrap:before {
 		content: '';
@@ -157,4 +196,13 @@ const {
 		}
 	} */
 	</style>
+
+	<script is:inline>
+		document.addEventListener('astro:after-swap', () => {
+			const decoration = document.querySelector('.decoration');
+			setTimeout(() => {
+				decoration.classList.add('decoration-in');
+			}, 1000);
+		});
+	</script>
 </Layout>

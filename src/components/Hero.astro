@@ -178,10 +178,11 @@
 	let titleLines = gsap.utils.toArray('h1 span');
 
 	function floatingDecorator(decorator, index) {
+		console.log('floating', decorators);
 		const randomize = (min, max) => Math.random() * (max - min) + min;
 
-		const moveX = randomize(50, 600);
-		const moveY = randomize(50, 600);
+		// const moveX = randomize(50, 600);
+		// const moveY = randomize(50, 600);
 		const positiveOrNegative = Math.random() < 0.5;
 
 		gsap.to(decorator, {
